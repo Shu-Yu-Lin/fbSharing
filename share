@@ -1,0 +1,30 @@
+<p> Loading... </p>
+
+<script> 
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+  const fbid = params.uuid;
+
+  let data = {
+    "app_type":"messenger",
+    "app_id":"204586723334254",
+    "channel_id":"111908465125444",
+    "shortcode_id":"rzmmjC0Xx",
+    "h5_uuid": fbid
+  };
+
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  
+  fetch("https://fb.high5.ai/messenger", {
+    method: "POST",
+    headers: myHeaders,
+    body: JSON.stringify(data)
+  }).then(res => {
+    console.log("Request complete! response:");
+    console.log(JSON.stringify(res));
+    alert("感謝您的分享，請關閉視窗");
+  }).catch(ex => {
+    alert(JSON.stringify(ex));
+  });
+</script>
