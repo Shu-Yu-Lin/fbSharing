@@ -1,30 +1,41 @@
-<p> Loading... </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FB Share</title>
+</head>
+<body>
+  <p> Loading... </p>
 
-<script> 
-  const urlSearchParams = new URLSearchParams(window.location.search);
-  const params = Object.fromEntries(urlSearchParams.entries());
-  const fbid = params.uuid;
+  <script> 
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    const fbid = params.uuid;
 
-  let data = {
-    "app_type":"messenger",
-    "app_id":"204586723334254",
-    "channel_id":"111908465125444",
-    "shortcode_id":"rzmmjC0Xx",
-    "h5_uuid": fbid
-  };
+    let data = {
+      "app_type":"messenger",
+      "app_id":"204586723334254",
+      "channel_id":"111908465125444",
+      "shortcode_id":"rzmmjC0Xx",
+      "h5_uuid": fbid
+    };
 
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  
-  fetch("https://fb.high5.ai/messenger", {
-    method: "POST",
-    headers: myHeaders,
-    body: JSON.stringify(data)
-  }).then(res => {
-    console.log("Request complete! response:");
-    console.log(JSON.stringify(res));
-    alert("感謝您的分享，請關閉視窗");
-  }).catch(ex => {
-    alert(JSON.stringify(ex));
-  });
-</script>
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    fetch("https://fb.high5.ai/messenger", {
+      method: "POST",
+      headers: myHeaders,
+      body: JSON.stringify(data)
+    }).then(res => {
+      console.log("Request complete! response:");
+      console.log(JSON.stringify(res));
+      alert("感謝您的分享，請關閉視窗");
+    }).catch(ex => {
+      alert(JSON.stringify(ex));
+    });
+  </script>
+</body>
+</html>
